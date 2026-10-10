@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* Offset for the fixed header so anchor jumps are not hidden behind it. */
+    --nav-offset: 88px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-offset);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv05';
+  }
+
+  /* A single, consistent focus ring across every interactive element. */
+  :focus-visible {
+    outline: 2px solid #9B7AFF;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: rgba(112, 71, 255, 0.35);
+    color: #F5F5F7;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-label text-muted;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+           text-sm font-semibold transition-colors duration-200
+           disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-purple text-white hover:bg-purple-soft;
+  }
+
+  .btn-ghost {
+    @apply btn border border-line-strong text-ink hover:border-purple hover:text-purple-soft;
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-line bg-surface px-4 py-3 text-sm text-ink
+           placeholder:text-muted/70 transition-colors duration-200
+           hover:border-line-strong focus:border-purple focus:outline-none;
+  }
+
+  .field-invalid {
+    @apply border-red-500/70 hover:border-red-500/70 focus:border-red-500;
+  }
+
+  .card {
+    @apply rounded-card border border-line bg-surface;
+  }
+}
+
+/* Honour the OS "reduce motion" setting: no transforms, no smooth scroll. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
