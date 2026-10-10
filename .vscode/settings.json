@@ -1,0 +1,5 @@
+{
+  // Live Server ("Go Live") can't run the TypeScript source directly.
+  // Serve the compiled site instead — run `npm run build` first.
+  "liveServer.settings.root": "/dist"
+}
