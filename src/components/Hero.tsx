@@ -14,7 +14,7 @@ export function Hero() {
         </p>
 
         <h1 className="mt-7 max-w-4xl text-[2.6rem] font-extrabold leading-[1.05] tracking-tight animate-fade-up sm:text-6xl lg:text-7xl">
-          Creative visuals.
+           visuals.
           <br />
           <span className="text-purple">Made to make an impact.</span>
         </h1>
